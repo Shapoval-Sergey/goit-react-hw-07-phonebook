@@ -1,17 +1,36 @@
-import { createAction } from "@reduxjs/toolkit";
-import { v4 as uuidv4 } from "uuid";
+import { createAction } from '@reduxjs/toolkit';
 
-const addContacts = createAction("contacts/addContact", (name, number) => ({
-  payload: {
-    contact: {
-      id: uuidv4(),
-      name,
-      number,
-    },
-  },
-}));
+const addContactRequest = createAction('contacts/addRequest');
+const addContactSuccess = createAction('contacts/addSuccess');
+const addContactError = createAction('contacts/addError');
 
-const removeContacts = createAction("contacts/removeContact");
-const changeFilter = createAction("contacts/changeFilter");
+const fetchContactsRequest = createAction('contacts/fetchRequest');
+const fetchContactsSuccess = createAction('contacts/fetchSuccess');
+const fetchContactsError = createAction('contacts/fetchError');
 
-export default { addContacts, removeContacts, changeFilter };
+const removeContactRequest = createAction('contacts/removeRequest');
+const removeContactSuccess = createAction('contacts/removeSuccess');
+const removeContactError = createAction('contacts/removeError');
+const removeContacts = createAction('contacts/removeContact');
+
+const changeFilterRequest = createAction('contacts/changeFilterRequest');
+const changeFilterSuccess = createAction('contacts/changeFilterSuccess');
+const changeFilterError = createAction('contacts/changeFilterError');
+const changeFilter = createAction('contacts/changeFilter');
+
+export default {
+  addContactRequest,
+  addContactSuccess,
+  addContactError,
+  fetchContactsRequest,
+  fetchContactsSuccess,
+  fetchContactsError,
+  removeContacts,
+  removeContactRequest,
+  removeContactSuccess,
+  removeContactError,
+  changeFilter,
+  changeFilterRequest,
+  changeFilterSuccess,
+  changeFilterError,
+};

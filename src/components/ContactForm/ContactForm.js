@@ -1,26 +1,26 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
-import contactsActions from "../../redux/contacts/contactsActions";
+import contactsOperations from '../../redux/contacts/contactsOperations';
 
-import s from "./ContactForm.module.css";
+import s from './ContactForm.module.css';
 
 class ContactForm extends Component {
   state = {
-    name: "",
-    number: "",
+    name: '',
+    number: '',
   };
 
-  handleSubmit = (e) => {
+  handleSubmit = e => {
     e.preventDefault();
     const { name, number } = this.state;
     this.props.onAddContact(name, number);
 
-    this.setState({ name: "", number: "" });
+    this.setState({ name: '', number: '' });
   };
 
-  handleChange = (e) => {
+  handleChange = e => {
     const { name, value } = e.target;
 
     this.setState({
@@ -71,7 +71,7 @@ ContactForm.propTypes = {
 // const mapStateToProps = (state) => state;
 
 const mapDispatchToProps = {
-  onAddContact: contactsActions.addContacts,
+  onAddContact: contactsOperations.addContact,
 };
 
 export default connect(null, mapDispatchToProps)(ContactForm);

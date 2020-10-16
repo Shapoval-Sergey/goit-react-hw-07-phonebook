@@ -1,10 +1,10 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
-import contactsActions from "../../../redux/contacts/contactsActions";
+import contactsActions from '../../../redux/contacts/contactsActions';
 
-import s from "./ContactListItem.module.css";
+import s from './ContactListItem.module.css';
 
 const ContactListItem = ({ name, id, number, onRemove }) => {
   return (
@@ -21,14 +21,14 @@ const ContactListItem = ({ name, id, number, onRemove }) => {
 };
 
 ContactListItem.propTypes = {
-  id: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   number: PropTypes.string.isRequired,
   onRemove: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state, ownProps) => {
-  const item = state.contacts.items.find((item) => item.id === ownProps.id);
+  const item = state.contacts.items.find(item => item.id === ownProps.id);
   return {
     ...item,
   };

@@ -1,16 +1,20 @@
-import { combineReducers } from "redux";
-import { createReducer } from "@reduxjs/toolkit";
-import contactsActions from "./contactsActions";
+import { combineReducers } from 'redux';
+import { createReducer } from '@reduxjs/toolkit';
+import contactsActions from './contactsActions';
 
-import errorMessage from "../../components/Notification/Notification";
+import errorMessage from '../../components/Notification/Notification';
 
-const addContacts = (state, action) => {
-  const names = state.map((item) => item.name.toLowerCase());
-  if (names.includes(action.payload.contact.name.toLowerCase().trim())) {
-    errorMessage(action.payload.contact.name);
+const addContact = (state, action) => {
+  const names = state.map(item => item.name.toLowerCase());
+  const isNotUniqueContact = names.includes(
+    action.payload.name.toLowerCase().trim(),
+  );
+
+  if (isNotUniqueContact) {
+    errorMessage(action.payload.name);
     return state;
   } else {
-    return [...state, action.payload.contact];
+    return [...state, action.payload];
   }
 };
 
@@ -18,20 +22,13 @@ const removeContacts = (state, action) => {
   return state.filter(({ id }) => id !== action.payload);
 };
 
-const items = createReducer(
-  [
-    { id: "id-1", name: "Rosie Simpson", number: "459-12-56" },
-    { id: "id-2", name: "Hermione Kline", number: "443-89-12" },
-    { id: "id-3", name: "Eden Clements", number: "645-17-79" },
-    { id: "id-4", name: "Annie Copeland", number: "227-91-26" },
-  ],
-  {
-    [contactsActions.addContacts]: addContacts,
-    [contactsActions.removeContacts]: removeContacts,
-  }
-);
+const items = createReducer([], {
+  [contactsActions.fetchContactsSuccess]: (_, action) => action.payload,
+  [contactsActions.addContactSuccess]: addContact,
+  [contactsActions.removeContacts]: removeContacts,
+});
 
-const filter = createReducer("", {
+const filter = createReducer('', {
   [contactsActions.changeFilter]: (state, action) => action.payload,
 });
 
