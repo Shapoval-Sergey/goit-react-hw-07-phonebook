@@ -11,11 +11,7 @@ const fetchContactsError = createAction('contacts/fetchError');
 const removeContactRequest = createAction('contacts/removeRequest');
 const removeContactSuccess = createAction('contacts/removeSuccess');
 const removeContactError = createAction('contacts/removeError');
-const removeContacts = createAction('contacts/removeContact');
 
-const changeFilterRequest = createAction('contacts/changeFilterRequest');
-const changeFilterSuccess = createAction('contacts/changeFilterSuccess');
-const changeFilterError = createAction('contacts/changeFilterError');
 const changeFilter = createAction('contacts/changeFilter');
 
 export default {
@@ -25,12 +21,8 @@ export default {
   fetchContactsRequest,
   fetchContactsSuccess,
   fetchContactsError,
-  removeContacts,
   removeContactRequest,
   removeContactSuccess,
   removeContactError,
   changeFilter,
-  changeFilterRequest,
-  changeFilterSuccess,
-  changeFilterError,
 };

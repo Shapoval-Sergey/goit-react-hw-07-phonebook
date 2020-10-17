@@ -18,14 +18,14 @@ const addContact = (state, action) => {
   }
 };
 
-const removeContacts = (state, action) => {
+const removeContact = (state, action) => {
   return state.filter(({ id }) => id !== action.payload);
 };
 
 const items = createReducer([], {
   [contactsActions.fetchContactsSuccess]: (_, action) => action.payload,
   [contactsActions.addContactSuccess]: addContact,
-  [contactsActions.removeContacts]: removeContacts,
+  [contactsActions.removeContactSuccess]: removeContact,
 });
 
 const filter = createReducer('', {
