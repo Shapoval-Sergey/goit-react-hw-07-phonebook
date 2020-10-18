@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
+import contactsSelectors from '../../../redux/contacts/contactsSelectors';
 import contactsOperations from '../../../redux/contacts/contactsOperations';
 
 import s from './ContactListItem.module.css';
@@ -28,9 +29,9 @@ ContactListItem.propTypes = {
 };
 
 const mapStateToProps = (state, ownProps) => {
-  const item = state.contacts.items.find(item => item.id === ownProps.id);
+  const contact = contactsSelectors.getContactsById(state, ownProps.id);
   return {
-    ...item,
+    ...contact,
   };
 };
 

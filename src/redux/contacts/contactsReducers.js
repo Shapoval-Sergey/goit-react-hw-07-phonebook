@@ -29,7 +29,7 @@ const items = createReducer([], {
 });
 
 const filter = createReducer('', {
-  [contactsActions.changeFilter]: (state, action) => action.payload,
+  [contactsActions.changeFilter]: (_, action) => action.payload,
 });
 
 export default combineReducers({

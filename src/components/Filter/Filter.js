@@ -1,9 +1,10 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
-import contactsActions from "../../redux/contacts/contactsActions";
-import s from "./Filter.module.css";
+import contactsSelectors from '../../redux/contacts/contactsSelectors';
+import contactsActions from '../../redux/contacts/contactsActions';
+import s from './Filter.module.css';
 
 const Filter = ({ value, onChangeFilter }) => {
   return (
@@ -15,7 +16,7 @@ const Filter = ({ value, onChangeFilter }) => {
           placeholder="Enter name"
           type="text"
           value={value}
-          onChange={(e) => onChangeFilter(e.target.value)}
+          onChange={e => onChangeFilter(e.target.value)}
         />
       </label>
     </div>
@@ -27,8 +28,8 @@ Filter.propTypes = {
   onChangeFilter: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  value: state.contacts.filter,
+const mapStateToProps = state => ({
+  value: contactsSelectors.getFilter(state),
 });
 
 const mapDispatchToProps = {
